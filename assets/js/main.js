@@ -67,6 +67,22 @@ sr.reveal(`.about__img, .testimonial__img`, {origin: 'right'})
 sr.reveal(`.about__data, .testimonial__data`, {origin: 'left'})
 
 
+let currentIndex = 0;
+
+function showSlide(index) {
+    const slides = document.querySelector('.gallery__slides');
+    const slideWidth = slides.clientWidth;
+    slides.style.transform = `translateX(${-index * slideWidth}px)`;
+}
+
+function moveSlide(step) {
+    const slides = document.querySelectorAll('.gallery__img');
+    currentIndex = (currentIndex + step + slides.length) % slides.length;
+    showSlide(currentIndex);
+}
+
+// Initialize the first slide position
+showSlide(currentIndex);
 
 
   
